@@ -1,0 +1,123 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./../../bower_components/app-layout/app-layout.html">
+<link rel="import" href="./../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="./../../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="./../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="./../../bower_components/app-layout/demo/sample-content.html">
+<link rel="import" href="./../../bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="./../../bower_components/paper-badge/paper-badge.html">
+<dom-module id="my-layout">
+    <template>
+        <style>
+            .toolbar {
+                background-color: #232323;
+                color: #fff;
+                /* box-shadow: 2px 2px 2px #888888; */
+            }
+
+            app-drawer {
+                --app-drawer-content-container: {
+                    background-color: #303030;
+                    color: #fff;
+                }
+            }
+            paper-progress{
+                width: 100%;
+                --paper-progress-active-color: 	#ff2828;
+                --paper-progress-container-color:#232323;
+                --paper-progress-indeterminate-cycle-duration: 20s;
+                /* --paper-progress-secondary-color: #232323;  */
+            }
+            app-drawer-layout {
+                --app-drawer-layout-content-transition: margin 0.2s;
+            }
+            .red {
+                --paper-badge-background:#ff2828;
+                --paper-badge-margin-bottom:-10px;
+                --paper-badge-margin-left:-5px;
+                --paper-badge-height:18px;
+                --paper-badge-width:18px;
+            }
+            .drawer-content {
+                margin-top: 80px;
+                height: calc(100% - 80px);
+                overflow: auto;
+            }
+        </style>
+
+        <app-header-layout>
+            <app-header fixed effects="waterfall" slot="header">
+                <paper-progress value="10" indeterminate bottom-item></paper-progress>
+                <app-toolbar class="toolbar">
+                    <paper-icon-button icon="menu" on-tap="toggleDrawer"></paper-icon-button>
+                    <div main-title>My app</div>
+                    <paper-icon-button id="notification" icon="social:notifications"></paper-icon-button>
+                    <paper-badge for="notification" label="4" class="red">
+                    </paper-badge>
+                    <paper-icon-button icon="icons:more-vert"></paper-icon-button>
+                   
+                    <!-- <paper-icon-button icon="close"></paper-icon-button>  -->
+                </app-toolbar>
+            </app-header>
+            <app-drawer-layout id="drawerLayout">
+                <app-drawer slot="drawer">
+                    <div class="drawer-content">
+                        <paper-icon-item>
+                            <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="query-builder" slot="item-icon"></iron-icon> <span>Snoozed</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="done" slot="item-icon"></iron-icon> <span>Done</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="drafts" slot="item-icon"></iron-icon> <span>Drafts</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Sent</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="delete" slot="item-icon"></iron-icon> <span>Trash</span>
+                        </paper-icon-item>
+                        <paper-icon-item>
+                            <iron-icon icon="report" slot="item-icon"></iron-icon> <span>Spam</span>
+                        </paper-icon-item>
+                    </div>
+                </app-drawer>
+
+                   <sample-content size="100"></sample-content>   
+
+            </app-drawer-layout>
+        </app-header-layout>
+    </template>
+
+    <script>
+        /**
+     * @customElement
+     * @polymer
+     */
+        class MyLayout extends Polymer.Element {
+            static get is() { return 'my-layout'; }
+            static get properties() {
+                return {
+                    prop1: {
+                        type: String,
+                        value: 'my-layout'
+                    }
+                };
+            }
+            toggleDrawer() {
+                var drawerLayout = this.$.drawerLayout;
+                if (drawerLayout.forceNarrow || !drawerLayout.narrow) {
+                    drawerLayout.forceNarrow = !drawerLayout.forceNarrow;
+                } else {
+                    drawerLayout.drawer.toggle();
+                }
+            }
+        }
+
+        window.customElements.define(MyLayout.is, MyLayout);
+    </script>
+</dom-module>

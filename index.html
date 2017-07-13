@@ -1,20 +1,45 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>simple-app</title>
-    <meta name="description" content="simple-app description">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
+  <title>simple-app</title>
+  <meta name="description" content="simple-app description">
 
-    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  <!-- See https://goo.gl/OOhYW5 -->
+  <link rel="manifest" href="/manifest.json">
 
-    <link rel="import" href="/src/my-app/my-app.html">
-  </head>
-  <body>
-    <my-app></my-app>
-  </body>
+  <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="/src/my-app/my-app.html">
+
+  <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDrGJvFQxwQv_lT9vc_XbiSStfN3v1i0i0",
+      authDomain: "simple-app-43e80.firebaseapp.com",
+      databaseURL: "https://simple-app-43e80.firebaseio.com",
+      projectId: "simple-app-43e80",
+      storageBucket: "",
+      messagingSenderId: "745881258560"
+    };
+    firebase.initializeApp(config);
+
+  </script>
+  <style>
+    body {
+      background-color: #111111;
+      margin: 0;
+      font-family: 'Roboto', 'Noto', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <my-app></my-app>
+</body>
+
 </html>
