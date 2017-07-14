@@ -1,0 +1,98 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="./../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="./../../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="./../../bower_components/app-route/app-route.html">
+<link rel="import" href="./../../bower_components/app-route/app-location.html">
+<dom-module id="my-drawer">
+  <template>
+    <style>
+        paper-icon-item:hover{
+            cursor: pointer;
+             background-color: #232323; 
+        }
+        paper-icon-item{
+            --paper-item-focused:{
+                color:#ff2828;
+                 /* background-color: #232323  */
+            }
+            --paper-item-focused-before: {
+                opacity: 0;
+            };
+        }
+        span{
+            color: #fff;
+        }
+    </style>
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{data}}"></app-route>
+    <template is="dom-repeat" items="[[listDrawer]]">
+        <paper-icon-item on-tap="selectDrawer">
+            <iron-icon icon="[[item.icon]]" slot="item-icon"></iron-icon> <span>[[item.name]]</span>
+        </paper-icon-item>
+    </template>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class MyDrawer extends Polymer.Element {
+      static get is() { return 'my-drawer'; }
+      static get properties() {
+        return {
+          listDrawer: {
+            type: Array,
+            value: [
+                {
+                    'name':'MAIN',
+                    'path' : 'main',
+                    'icon' : 'icons:home'
+                },
+                {
+                    'name':'CREATE',
+                    'path' : 'create',
+                    'icon' : 'icons:create'
+                },
+                {
+                    'name':'WORKING',
+                    'path' : 'work',
+                    'icon' : 'icons:work'
+                },
+                {
+                    'name':'BUILD',
+                    'path' : 'build',
+                    'icon' : 'icons:build'
+                },
+                {
+                    'name':'PROFILE',
+                    'path' : 'profile',
+                    'icon' : 'social:person'
+                },
+                {
+                    'name':'SETTING',
+                    'path' : 'setting',
+                    'icon' : 'icons:settings'
+                }
+            ]
+          },
+          route:{
+              type:String,
+              value:''
+          }
+        };
+      }
+      selectDrawer(e){
+        var item = e.model.item;
+        console.log(item.path)
+        this.route = {
+            prefix: '',
+            path:'/'+item.path
+        }
+      }
+    }
+
+    window.customElements.define(MyDrawer.is, MyDrawer);
+  </script>
+</dom-module>

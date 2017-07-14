@@ -7,6 +7,7 @@
 <link rel="import" href="./../../bower_components/app-layout/demo/sample-content.html">
 <link rel="import" href="./../../bower_components/paper-progress/paper-progress.html">
 <link rel="import" href="./../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="./my-drawer.html">
 <dom-module id="my-layout">
     <template>
         <style>
@@ -18,7 +19,7 @@
 
             app-drawer {
                 --app-drawer-content-container: {
-                    background-color: #303030;
+                    background-color: #1C1C1C;
                     color: #fff;
                 }
             }
@@ -63,7 +64,8 @@
             <app-drawer-layout id="drawerLayout">
                 <app-drawer slot="drawer">
                     <div class="drawer-content">
-                        <paper-icon-item>
+                        <my-drawer></my-drawer>
+                        <!-- <paper-icon-item>
                             <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
                         </paper-icon-item>
                         <paper-icon-item>
@@ -83,7 +85,8 @@
                         </paper-icon-item>
                         <paper-icon-item>
                             <iron-icon icon="report" slot="item-icon"></iron-icon> <span>Spam</span>
-                        </paper-icon-item>
+                        </paper-icon-item> -->
+                        
                     </div>
                 </app-drawer>
 
