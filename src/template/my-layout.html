@@ -4,9 +4,13 @@
 <link rel="import" href="./../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="./../../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="./../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="./../../bower_components/paper-item/paper-item-body.html">
 <link rel="import" href="./../../bower_components/app-layout/demo/sample-content.html">
 <link rel="import" href="./../../bower_components/paper-progress/paper-progress.html">
 <link rel="import" href="./../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="./../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="./../../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="./../../bower_components/iron-icons/social-icons.html">
 <link rel="import" href="./my-drawer.html">
 <dom-module id="my-layout">
     <template>
@@ -23,28 +27,64 @@
                     color: #fff;
                 }
             }
-            paper-progress{
+
+            paper-progress {
                 width: 100%;
-                --paper-progress-active-color: 	#ff2828;
-                --paper-progress-container-color:#232323;
+                --paper-progress-active-color: #ff2828;
+                --paper-progress-container-color: #232323;
                 --paper-progress-indeterminate-cycle-duration: 20s;
                 /* --paper-progress-secondary-color: #232323;  */
             }
+
             app-drawer-layout {
                 --app-drawer-layout-content-transition: margin 0.2s;
             }
+
             .red {
-                --paper-badge-background:#ff2828;
-                --paper-badge-margin-bottom:-10px;
-                --paper-badge-margin-left:-5px;
-                --paper-badge-height:18px;
-                --paper-badge-width:18px;
+                --paper-badge-background: #ff2828;
+                --paper-badge-margin-bottom: -10px;
+                --paper-badge-margin-left: -5px;
+                --paper-badge-height: 18px;
+                --paper-badge-width: 18px;
             }
+
             .drawer-content {
                 margin-top: 80px;
                 height: calc(100% - 80px);
                 overflow: auto;
             }
+
+            #alignedDialog {
+                margin: 0;
+                width: 20%;
+                height: auto;
+                background-color: #1C1C1C;
+                color: #fff;
+            }
+            paper-icon-item{
+                height: 20px;
+                margin: 5px;
+            }
+            paper-icon-item:hover{
+                cursor: pointer;
+                background-color: #232323; 
+            }
+             paper-icon-item{
+                --paper-item-focused:{
+                    color:#ff2828;
+                    /* background-color: #232323  */
+                }
+                --paper-item-focused-before: {
+                    opacity: 0;
+                };
+            }
+            span{
+                color: #fff;
+            }
+            /* paper-item-body{
+                --paper-item-body-two-line-min-height:0px;
+                --paper-item-body-three-line-min-height:0px;
+            } */
         </style>
 
         <app-header-layout>
@@ -56,8 +96,8 @@
                     <paper-icon-button id="notification" icon="social:notifications"></paper-icon-button>
                     <paper-badge for="notification" label="4" class="red">
                     </paper-badge>
-                    <paper-icon-button icon="icons:more-vert"></paper-icon-button>
-                   
+                    <paper-icon-button id="btnDetail" icon="icons:more-vert" on-tap="opeDialog"></paper-icon-button>
+
                     <!-- <paper-icon-button icon="close"></paper-icon-button>  -->
                 </app-toolbar>
             </app-header>
@@ -65,35 +105,38 @@
                 <app-drawer slot="drawer">
                     <div class="drawer-content">
                         <my-drawer></my-drawer>
-                        <!-- <paper-icon-item>
-                            <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="query-builder" slot="item-icon"></iron-icon> <span>Snoozed</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="done" slot="item-icon"></iron-icon> <span>Done</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="drafts" slot="item-icon"></iron-icon> <span>Drafts</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Sent</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="delete" slot="item-icon"></iron-icon> <span>Trash</span>
-                        </paper-icon-item>
-                        <paper-icon-item>
-                            <iron-icon icon="report" slot="item-icon"></iron-icon> <span>Spam</span>
-                        </paper-icon-item> -->
-                        
                     </div>
                 </app-drawer>
 
-                   <sample-content size="100"></sample-content>   
+                <!-- <sample-content size="100"></sample-content> -->
 
             </app-drawer-layout>
         </app-header-layout>
+        <paper-dialog id="alignedDialog" no-overlap horizontal-align="right" vertical-align="top">
+             <!-- <h2>Aligned dialog</h2>  -->
+             <!-- <paper-dialog-scrollable>  -->
+                  <!-- <div role="listbox">   -->
+                     <paper-icon-item>
+                        <iron-icon icon="social:person" slot="item-icon"></iron-icon>
+                        <paper-item-body two-line>
+                            <span>Profile</span>
+                        </paper-item-body>
+                    </paper-icon-item> 
+                        <paper-icon-item>
+                        <iron-icon icon="icons:settings" slot="item-icon"></iron-icon>
+                        <paper-item-body two-line>
+                            <span>Setting</span>
+                        </paper-item-body>
+                    </paper-icon-item> 
+                    <paper-icon-item>
+                        <iron-icon icon="icons:exit-to-app" slot="item-icon"></iron-icon>
+                        <paper-item-body two-line>
+                            <span>Sign-out</span>
+                        </paper-item-body>
+                    </paper-icon-item> 
+                  <!-- </div>   -->
+             <!-- </paper-dialog-scrollable>  -->
+        </paper-dialog>
     </template>
 
     <script>
@@ -108,8 +151,17 @@
                     prop1: {
                         type: String,
                         value: 'my-layout'
+                    },
+                    element: {
+                        type: Object,
+                        value: {}
                     }
                 };
+            }
+            ready() {
+                super.ready();
+                this.element.dailog = this.$.alignedDialog;
+                this.element.button = this.$.btnDetail;
             }
             toggleDrawer() {
                 var drawerLayout = this.$.drawerLayout;
@@ -118,6 +170,10 @@
                 } else {
                     drawerLayout.drawer.toggle();
                 }
+            }
+            opeDialog() {
+                this.element.dailog.positionTarget = this.element.button;
+                this.element.dailog.open();
             }
         }
 

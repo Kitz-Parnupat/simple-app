@@ -9,7 +9,9 @@
     "paper-item": "PolymerElements/paper-item#^2.0.0",
     "paper-progress": "PolymerElements/paper-progress#^2.0.1",
     "paper-badge": "PolymerElements/paper-badge#^2.0.0",
-    "app-route": "PolymerElements/app-route#^2.0.0"
+    "app-route": "PolymerElements/app-route#^2.0.0",
+    "paper-dialog": "PolymerElements/paper-dialog#^2.0.0",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^2.1.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
