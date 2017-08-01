@@ -1,0 +1,46 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<!--
+`<page>` is Description
+
+@element page
+-->
+<dom-module id="page-create">
+    <template>
+        <style>
+            .header{
+                color:white;
+                font-size: 22px;
+            }
+        </style>
+        <div class="header">page-create</div>
+    </template>
+
+    <script>
+        class pageCreate extends Polymer.Element {
+
+            static get is() { return 'page-create'; }
+
+            static get properties() {
+                return {
+                    
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(pageCreate.is, pageCreate);
+    </script>
+</dom-module>
