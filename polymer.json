@@ -6,7 +6,7 @@
   },
   "builds": [
     {
-      "name":"es6",
+      "name":"es6-bundle",
       "bundle": true,
       "js": {"minify": true, "compile": false},
       "css": {"minify": true},
@@ -16,7 +16,7 @@
       "insertPrefetchLinks":true
     },
     {
-      "name":"es5",
+      "name":"es5-unbundle",
       "bundle": false,
       "js": {"minify": true, "compile": true},
       "css": {"minify": true},
