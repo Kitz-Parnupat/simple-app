@@ -1,0 +1,86 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/lib/elements/dom-repeat.html">
+
+
+<dom-module id="create-list">
+    <template>
+        <style>
+            *{
+                color:white;
+            }
+        </style>
+        <table border="1">
+            <tr>
+                <th>#</th>
+                <th>name</th>
+                <th>tel</th>
+            </tr>
+            <template is="dom-repeat" items="{{nameList}}">
+                <tr>
+                    <td>[[index]]</td>
+                    <td>[[item.name]]</td>
+                    <td>[[item.tel]]</td>
+                </tr>
+            </template>
+        </table>
+    </template>
+
+    <script>
+        /**
+         * `create-list` Description
+         *
+         * @summary ShortDescription.
+         * @customElement
+         * @polymer
+         * @extends {Polymer.Element}
+         */
+        class CreateList extends Polymer.Element {
+            /**
+             * String providing the tag name to register the element under.
+             */
+            static get is() {
+                return 'create-list';
+            }
+
+            /**
+             * Object describing property-related metadata used by Polymer features
+             */
+            static get properties() {
+                return {
+                    nameList:{
+                        type:Array,
+                        value:[
+                            {
+                                name:'name01',
+                                tel:'+66898392213'
+                            }
+                        ]
+                    }
+                };
+            }
+
+            /**
+             * Instance of the element is created/upgraded. Use: initializing state,
+             * set up event listeners, create shadow dom.
+             * @constructor
+             */
+            constructor() {
+                super();
+            }
+
+            /**
+             * Use for one-time configuration of your component after local DOM is initialized. 
+             */
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+        }
+
+        window.customElements.define(CreateList.is, CreateList);
+    </script>
+</dom-module>

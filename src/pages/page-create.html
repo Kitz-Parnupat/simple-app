@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/lazy-imports/lazy-imports-mixin.html">
+
 
 <!--
 `<page>` is Description
@@ -6,6 +8,7 @@
 @element page
 -->
 <dom-module id="page-create">
+    <link rel="lazy-import" group="lazy" href="./components/create-list.html">
     <template>
         <style>
             .header{
@@ -14,10 +17,12 @@
             }
         </style>
         <div class="header">page-create</div>
+        <button on-click="import">import</button>
+        <create-list></create-list>
     </template>
 
     <script>
-        class pageCreate extends Polymer.Element {
+        class pageCreate extends Polymer.LazyImportsMixin(Polymer.Element) {
 
             static get is() { return 'page-create'; }
 
@@ -29,13 +34,25 @@
 
             constructor() {
                 super();
+                console.log('constructor')
+            }
+        
+            ready (){
+                super.ready ();
+                console.log('ready ')
+            }
+            import(){
+              
             }
 
-            ready() {
-                super.ready();
+            connectedCallback() {
+                super.connectedCallback();
 
                 Polymer.RenderStatus.afterNextRender(this, function() {
-                    
+                    this.importLazyGroup('lazy').then((results) => {
+                        console.log(results);
+                        this.dispatchEvent(new CustomEvent('create-list', results));
+                    });
                 });
             }
 

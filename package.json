@@ -1,0 +1,26 @@
+{
+  "name": "simple-app",
+  "version": "1.0.0",
+  "description": "First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kitz-Parnupat/simple-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kitz-Parnupat/simple-app/issues"
+  },
+  "homepage": "https://github.com/Kitz-Parnupat/simple-app#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "redux": "^3.7.2"
+  }
+}
